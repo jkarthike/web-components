@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Real Components</title>
+        <style>
+            :root {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .form-container {
+                margin: 0 auto;
+                max-width: 180px;
+            }
+        </style>
+        <script src="src/components/real-digital-form.js"></script>
+        <script src="src/components/real-digital-textfield.js"></script>
+        <script src="src/components/real-digital-button.js"></script>
+    </head>
+    <body>
+        <div class="form-container">
+            <h2>Task 1 form</h2>
+            <real-digital-form
+                action="https://real-mock.free.beeceptor.com"
+                method="post"
+            >
+                <real-digital-textfield
+                    name="name"
+                    type="text"
+                    label="Name:"
+                    placeholder="Name"
+                    required="true"
+                    validation="^[a-zA-Z]+$"
+                ></real-digital-textfield>
+                <real-digital-textfield
+                    name="phone"
+                    type="number"
+                    label="Phone number:"
+                    placeholder="Phone number"
+                    required="true"
+                    validation="^[0-9]+$"
+                ></real-digital-textfield>
+                <real-digital-textfield
+                    name="subject"
+                    type="text"
+                    label="Subject:"
+                    placeholder="Subject"
+                ></real-digital-textfield>
+                <real-digital-button type="submit">Submit</real-digital-button>
+            </real-digital-form>
+        </div>
+    </body>
+</html>
