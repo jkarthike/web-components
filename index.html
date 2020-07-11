@@ -50,5 +50,11 @@
                 <real-digital-button type="submit">Submit</real-digital-button>
             </real-digital-form>
         </div>
+        <script>
+            const form = document.querySelector("real-digital-form");
+            form.addEventListener("submit", (data) => {
+                alert("form submitted");
+            });
+        </script>
     </body>
 </html>

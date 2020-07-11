@@ -8,6 +8,7 @@ class RealDigitalTextField extends HTMLElement {
                     height: 30px;
                     font-size: 16px;
                     border: 1px solid darkgrey;
+                    min-width: 300px;
                 }
 
                 .label {
