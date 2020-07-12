@@ -55,7 +55,15 @@
         </div>
         <script>
             const form = document.querySelector("real-digital-form");
+            const inputElement = document.querySelectorAll(
+                "real-digital-textfield"
+            );
             form.addEventListener("submit", (data) => {
+                if (inputElement) {
+                    inputElement.forEach((element) => {
+                        element.clearValue();
+                    });
+                }
                 alert("form submitted!");
             });
         </script>

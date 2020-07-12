@@ -34,7 +34,12 @@ class RealDigitalForm extends HTMLElement {
                     if (
                         arrayItem.nodeName
                             .toLowerCase()
-                            .includes("real-digital-textfield")
+                            .includes("real-digital-textfield") &&
+                        this.slotInputElements.filter(
+                            (item) =>
+                                item.inputElement.name ==
+                                arrayItem.inputElement.name
+                        ).length == 0
                     ) {
                         this.slotInputElements.push(arrayItem);
                     }

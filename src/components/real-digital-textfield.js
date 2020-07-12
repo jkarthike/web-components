@@ -113,6 +113,11 @@ class RealDigitalTextField extends HTMLElement {
         }
         return true;
     }
+
+    clearValue() {
+        this.inputElement.value = null;
+        this.toggleErrorMessage(false);
+    }
 }
 
 customElements.define("real-digital-textfield", RealDigitalTextField);
