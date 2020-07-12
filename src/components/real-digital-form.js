@@ -37,7 +37,7 @@ class RealDigitalForm extends HTMLElement {
                             .includes("real-digital-textfield") &&
                         this.slotInputElements.filter(
                             (item) =>
-                                item.inputElement.name ===
+                                item.inputElement.name ==
                                 arrayItem.inputElement.name
                         ).length == 0
                     ) {
@@ -87,23 +87,28 @@ class RealDigitalForm extends HTMLElement {
      */
     async submit() {
         if (this.checkValidity() && this.action) {
-            let data;
-            if (this.method == "GET") {
-                const formdata = new URLSearchParams(this.formdata).toString();
-                data = await fetch(`${this.action}?${formdata}`);
+            const data = await fetch(this.action, {
+                method: "POST",
+                body: this.formdata,
+            });
+
+            if (data.status === 200) {
+                this.dispatchEvent(
+                    new CustomEvent("submit", {
+                        detail: {
+                            data: data.json(),
+                        },
+                    })
+                );
             } else {
-                data = await fetch(this.action, {
-                    method: "POST",
-                    body: this.formdata,
-                });
+                this.dispatchEvent(
+                    new CustomEvent("submitionError", {
+                        detail: {
+                            data: data.json(),
+                        },
+                    })
+                );
             }
-            this.dispatchEvent(
-                new CustomEvent("submit", {
-                    detail: {
-                        data: data.json(),
-                    },
-                })
-            );
         }
     }
 
@@ -119,17 +124,6 @@ class RealDigitalForm extends HTMLElement {
         });
         formdata.json = jsondata;
         return formdata;
-    }
-
-    /**
-     * Gets the method property
-     */
-    get method() {
-        const method = (this.getAttribute("method") || "get").toUpperCase();
-        if (["GET", "POST"].includes(method)) {
-            return method;
-        }
-        return "GET";
     }
 
     /**
