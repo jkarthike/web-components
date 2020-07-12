@@ -92,7 +92,7 @@ class RealDigitalForm extends HTMLElement {
                 body: this.formdata,
             });
 
-            if (data.status === 200) {
+            if (data.ok) {
                 this.dispatchEvent(
                     new CustomEvent("submit", {
                         detail: {
