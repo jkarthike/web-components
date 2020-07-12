@@ -12,7 +12,7 @@ class RealDigitalForm extends HTMLElement {
                 grid-template-columns: 200px;
                 grid-gap: 20px;
                 align-items: center;
-                justify-items: left;
+                justify-items: center;
             }
         </style>
         <form id="form" method="${this.method}" action="${this.action}">
@@ -89,7 +89,7 @@ class RealDigitalForm extends HTMLElement {
             this.dispatchEvent(
                 new CustomEvent("submit", {
                     detail: {
-                        data: data.json(),
+                        data: data.text(),
                     },
                 })
             );

@@ -6,11 +6,15 @@
         <title>Real Components</title>
         <style>
             :root {
-                font-family: Arial, Helvetica, sans-serif;
+                font-family: Avenir, Helvetica, Arial, sans-serif;
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                text-align: center;
+                color: #2c3e50;
             }
 
             .form-container {
-                margin: 0 auto;
+                margin: 40px auto;
                 max-width: 180px;
             }
         </style>
@@ -20,9 +24,8 @@
     </head>
     <body>
         <div class="form-container">
-            <h2>Task 1 form</h2>
             <real-digital-form
-                action="https://real-mock.free.beeceptor.com"
+                action="http://localhost:4000/users/personalDetails"
                 method="post"
             >
                 <real-digital-textfield
@@ -53,7 +56,7 @@
         <script>
             const form = document.querySelector("real-digital-form");
             form.addEventListener("submit", (data) => {
-                alert("form submitted");
+                alert("form submitted!");
             });
         </script>
     </body>

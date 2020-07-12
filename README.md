@@ -11,3 +11,9 @@ npm install
 ```
 npm run serve
 ```
+
+### Runs in below port
+
+```
+http://localhost:3000
+```

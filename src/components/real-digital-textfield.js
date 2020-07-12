@@ -12,8 +12,10 @@ class RealDigitalTextField extends HTMLElement {
                 }
 
                 .label {
+                    display: flex;
                     color: var(--color-label, #000);
                     min-width: 100px;
+                    justify-content: flex-start;
                 }
 
                 .error-message {
@@ -21,6 +23,7 @@ class RealDigitalTextField extends HTMLElement {
                     color: #f30657;
                     font-size: 14px;
                     font-weight: 600;
+                    text-align: left;
                     display: none;
                 }
             </style>
