@@ -37,7 +37,7 @@ class RealDigitalForm extends HTMLElement {
                             .includes("real-digital-textfield") &&
                         this.slotInputElements.filter(
                             (item) =>
-                                item.inputElement.name ==
+                                item.inputElement.name ===
                                 arrayItem.inputElement.name
                         ).length == 0
                     ) {
@@ -66,6 +66,9 @@ class RealDigitalForm extends HTMLElement {
         });
     }
 
+    /**
+     * Check the validation of input field based on patten property provided
+     */
     checkValidity() {
         let validity = true;
         this.slotInputElements.forEach((el) => {
@@ -79,6 +82,9 @@ class RealDigitalForm extends HTMLElement {
         return validity;
     }
 
+    /**
+     * Submits the form, form data being request
+     */
     async submit() {
         if (this.checkValidity() && this.action) {
             let data;
@@ -101,6 +107,9 @@ class RealDigitalForm extends HTMLElement {
         }
     }
 
+    /**
+     * Gets the form data, based on input field inside form
+     */
     get formdata() {
         const formdata = new FormData();
         const jsondata = {};
@@ -112,6 +121,9 @@ class RealDigitalForm extends HTMLElement {
         return formdata;
     }
 
+    /**
+     * Gets the method property
+     */
     get method() {
         const method = (this.getAttribute("method") || "get").toUpperCase();
         if (["GET", "POST"].includes(method)) {
@@ -120,6 +132,9 @@ class RealDigitalForm extends HTMLElement {
         return "GET";
     }
 
+    /**
+     * Gets the action property
+     */
     get action() {
         return this.getAttribute("action") || "";
     }

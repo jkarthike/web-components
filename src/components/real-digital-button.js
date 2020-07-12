@@ -19,6 +19,9 @@ class RealDigitalButton extends HTMLElement {
         this.buttonElement;
     }
 
+    /**
+     * Gets the type property
+     */
     get type() {
         return this.getAttribute("type") || "button";
     }

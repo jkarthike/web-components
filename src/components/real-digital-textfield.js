@@ -35,28 +35,77 @@ class RealDigitalTextField extends HTMLElement {
         this.labelElement;
     }
 
+    /**
+     * Gets the name property
+     */
     get name() {
         return this.getAttribute("name") || "";
     }
 
+    /**
+     * Gets the label property
+     */
     get label() {
         return this.getAttribute("label") || "";
     }
 
+    /**
+     * Gets the type property
+     */
     get type() {
         return this.getAttribute("type") || "text";
     }
 
+    /**
+     * Gets the placeholder property
+     */
     get placeholder() {
         return this.getAttribute("placeholder") || "";
     }
 
+    /**
+     * Gets the validationPattern property
+     */
     get validationPattern() {
         return this.getAttribute("validation") || "";
     }
 
+    /**
+     * Gets the required property
+     */
     get required() {
         return this.getAttribute("required") || false;
+    }
+
+    /**
+     * shows/hides error message element
+     */
+    toggleErrorMessage(show) {
+        show
+            ? (this.errorMessage.style.display = "block")
+            : (this.errorMessage.style.display = "none");
+    }
+
+    /**
+     * Check the validation of input field based on patten property provided
+     */
+    checkValidity() {
+        if (!this.inputElement.value && this.required) {
+            return false;
+        }
+        if (this.inputElement.value && this.validationPattern) {
+            const regex = new RegExp(this.validationPattern);
+            return regex.test(this.inputElement.value);
+        }
+        return true;
+    }
+
+    /**
+     * Clears the input value and hides error message element
+     */
+    clearValue() {
+        this.inputElement.value = null;
+        this.toggleErrorMessage(false);
     }
 
     connectedCallback() {
@@ -95,28 +144,6 @@ class RealDigitalTextField extends HTMLElement {
         if (name == "label" && this.labelElement) {
             this.labelElement.innerText = newValue;
         }
-    }
-
-    toggleErrorMessage(show) {
-        show
-            ? (this.errorMessage.style.display = "block")
-            : (this.errorMessage.style.display = "none");
-    }
-
-    checkValidity() {
-        if (!this.inputElement.value && this.required) {
-            return false;
-        }
-        if (this.inputElement.value && this.validationPattern) {
-            const regex = new RegExp(this.validationPattern);
-            return regex.test(this.inputElement.value);
-        }
-        return true;
-    }
-
-    clearValue() {
-        this.inputElement.value = null;
-        this.toggleErrorMessage(false);
     }
 }
 
