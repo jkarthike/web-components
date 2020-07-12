@@ -89,7 +89,7 @@ class RealDigitalForm extends HTMLElement {
             this.dispatchEvent(
                 new CustomEvent("submit", {
                     detail: {
-                        data: data.text(),
+                        data: data.json(),
                     },
                 })
             );
