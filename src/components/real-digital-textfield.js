@@ -121,26 +121,31 @@ class RealDigitalTextField extends HTMLElement {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        if (name == "name" && this.inputElement) {
-            this.inputElement.setAttribute("name", newValue);
-        }
-
-        if (name == "placeholder" && this.inputElement) {
-            this.inputElement.setAttribute("placeholder", newValue);
-        }
-
-        if (name == "required" && this.inputElement) {
-            this.inputElement.setAttribute("required", newValue);
-        }
-
-        if (name == "type" && this.inputElement) {
-            if (newValue !== null) {
-                this.inputElement.setAttribute("type", newValue);
-            } else {
-                this.inputElement.setAttribute("type", "text");
+        // For input element
+        if (this.inputElement) {
+            switch (name) {
+                case "name":
+                    this.inputElement.setAttribute("name", newValue);
+                    break;
+                case "placeholder":
+                    this.inputElement.setAttribute("placeholder", newValue);
+                    break;
+                case "required":
+                    this.inputElement.setAttribute("required", newValue);
+                    break;
+                case "type":
+                    if (newValue !== null) {
+                        this.inputElement.setAttribute("type", newValue);
+                    } else {
+                        this.inputElement.setAttribute("type", "text");
+                    }
+                    break;
+                default:
+                    break;
             }
         }
 
+        // For label element
         if (name == "label" && this.labelElement) {
             this.labelElement.innerText = newValue;
         }

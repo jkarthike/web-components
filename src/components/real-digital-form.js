@@ -15,7 +15,7 @@ class RealDigitalForm extends HTMLElement {
                 justify-items: center;
             }
         </style>
-        <form id="form" method="${this.method}" action="${this.action}">
+        <form id="form" method="${this.method}" action="post">
             <slot></slot>
         </form>
         `;
