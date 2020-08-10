@@ -1,4 +1,4 @@
-class RealDigitalTextField extends HTMLElement {
+class TextField extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: "open" });
@@ -123,25 +123,12 @@ class RealDigitalTextField extends HTMLElement {
     attributeChangedCallback(name, oldValue, newValue) {
         // For input element
         if (this.inputElement) {
-            switch (name) {
-                case "name":
-                    this.inputElement.setAttribute("name", newValue);
-                    break;
-                case "placeholder":
-                    this.inputElement.setAttribute("placeholder", newValue);
-                    break;
-                case "required":
-                    this.inputElement.setAttribute("required", newValue);
-                    break;
-                case "type":
-                    if (newValue !== null) {
-                        this.inputElement.setAttribute("type", newValue);
-                    } else {
-                        this.inputElement.setAttribute("type", "text");
-                    }
-                    break;
-                default:
-                    break;
+            this.inputElement.setAttribute(name, newValue);
+            if (name === "type") {
+                this.inputElement.setAttribute(
+                    "type",
+                    newValue ? newValue : "text"
+                );
             }
         }
 
@@ -152,4 +139,4 @@ class RealDigitalTextField extends HTMLElement {
     }
 }
 
-customElements.define("real-digital-textfield", RealDigitalTextField);
+customElements.define("custom-textfield", TextField);

@@ -1,4 +1,4 @@
-class RealDigitalButton extends HTMLElement {
+class Button extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: "open" });
@@ -46,4 +46,4 @@ class RealDigitalButton extends HTMLElement {
     }
 }
 
-customElements.define("real-digital-button", RealDigitalButton);
+customElements.define("custom-button", Button);

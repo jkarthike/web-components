@@ -1,4 +1,4 @@
-class RealDigitalForm extends HTMLElement {
+class Form extends HTMLElement {
     constructor() {
         super();
         const shadowRoot = this.attachShadow({ mode: "open" });
@@ -87,6 +87,9 @@ class RealDigitalForm extends HTMLElement {
      */
     async submit() {
         if (this.checkValidity() && this.action) {
+            /* this.dispatchEvent(
+                new CustomEvent("onSubmit", )
+            ); */
             const data = await fetch(this.action, {
                 method: "POST",
                 body: this.formdata,
@@ -147,6 +150,6 @@ class RealDigitalForm extends HTMLElement {
     }
 }
 
-if (!customElements.get("real-digital-form")) {
-    customElements.define("real-digital-form", RealDigitalForm);
+if (!customElements.get("custom-form")) {
+    customElements.define("custom-form", Form);
 }
